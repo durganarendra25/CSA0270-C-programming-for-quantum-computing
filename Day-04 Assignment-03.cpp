@@ -21,7 +21,7 @@ int main() {
     struct student s;
     printf("Enter student name: ");
     fgets(s.name, 50, stdin);
-    s.name[strcspn(s.name, "\n")] = 0; 
+    s.name[strcspn(s.name, "\n")] = 0; // remove newline character
 
     printf("Enter roll number: ");
     scanf("%d", &s.roll_number);
@@ -31,7 +31,8 @@ int main() {
 
     printf("Enter date of admission (DD/MM/YYYY): ");
     scanf("%d/%d/%d", &s.admission_date.day, &s.admission_date.month, &s.admission_date.year);
-    
+
+    // Calculate age at the time of admission
     time_t t = time(NULL);
     struct tm current_time = *localtime(&t);
     int current_year = current_time.tm_year + 1900;
